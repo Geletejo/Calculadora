@@ -11,6 +11,12 @@ package codigo;
  */
 public class VentanaCalculadora extends javax.swing.JFrame {
 
+    
+    double operando1 = 0;   //Primer operando.
+    
+    String operacion = "";  //Guarda que opercaion se ha pulsado
+
+    
     /**
      * Creates new form VentanaCalculadora
      */
@@ -26,6 +32,17 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         pantalla.setText(pantalla.getText() + numero);
         }   
     }
+    
+    
+    private void operacionPulsada(String _operacion){
+        operacion = _operacion;
+        //Se convierte los escrito en la pantalla (el numero pero que ahora es un String) a su equivalente double, para poder operar.
+        operando1 = Double.valueOf (pantalla.getText());
+        
+        //borro pantalla
+        pantalla.setText("0");
+    }
+    
     
     
     /**
@@ -408,7 +425,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_button3ActionPerformed
 
     private void sumaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sumaMousePressed
-        // TODO add your handling code here:
+        operacionPulsada("+");
     }//GEN-LAST:event_sumaMousePressed
 
     private void sumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaActionPerformed
@@ -416,7 +433,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_sumaActionPerformed
 
     private void restaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restaMousePressed
-        // TODO add your handling code here:
+        operacionPulsada("-");
     }//GEN-LAST:event_restaMousePressed
 
     private void restaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaActionPerformed
@@ -424,7 +441,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_restaActionPerformed
 
     private void multiplicacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_multiplicacionMousePressed
-        // TODO add your handling code here:
+        operacionPulsada("*");
     }//GEN-LAST:event_multiplicacionMousePressed
 
     private void multiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionActionPerformed
@@ -440,7 +457,19 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_button0ActionPerformed
 
     private void igualMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_igualMousePressed
-        // TODO add your handling code here:
+        
+        //Leo el segundo operando que esta en la pantalla y lo convierto a un Double.
+        double operando2 = Double.valueOf (pantalla.getText());
+        
+        if (operacion.equals("+")){
+            operando1= operando1 + operando2;
+        }
+        
+        
+        
+        //Dibujo en la pantalla el resultado convertido a string
+        pantalla.setText(String.valueOf (operando1));
+        
     }//GEN-LAST:event_igualMousePressed
 
     private void igualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igualActionPerformed
@@ -448,7 +477,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_igualActionPerformed
 
     private void divisionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_divisionMousePressed
-        // TODO add your handling code here:
+        operacionPulsada("/");
     }//GEN-LAST:event_divisionMousePressed
 
     private void divisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divisionActionPerformed
