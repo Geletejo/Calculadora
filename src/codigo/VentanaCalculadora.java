@@ -38,9 +38,9 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         operacion = _operacion;
         //Se convierte los escrito en la pantalla (el numero pero que ahora es un String) a su equivalente double, para poder operar.
         operando1 = Double.valueOf (pantalla.getText());
-        
         //borro pantalla
         pantalla.setText("0");
+        pantalla2.setText(String.valueOf(operando1));
     }
     
     
@@ -70,6 +70,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
         button0 = new javax.swing.JButton();
         igual = new javax.swing.JButton();
         division = new javax.swing.JButton();
+        pantalla2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -275,15 +276,25 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        pantalla2.setBackground(java.awt.Color.black);
+        pantalla2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pantalla2.setForeground(java.awt.Color.blue);
+        pantalla2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        pantalla2.setText("0");
+        pantalla2.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pantalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pantalla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,8 +333,10 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(pantalla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(button7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(button8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,6 +478,16 @@ public class VentanaCalculadora extends javax.swing.JFrame {
             operando1= operando1 + operando2;
         }
         
+        if (operacion.equals("-")){
+            operando1= operando1 - operando2;
+        }
+        if (operacion.equals("*")){
+            operando1= operando1 * operando2;
+        }           
+        if (operacion.equals("/")){
+            operando1= operando1 / operando2;
+        }
+        
         
         
         //Dibujo en la pantalla el resultado convertido a string
@@ -534,6 +557,7 @@ public class VentanaCalculadora extends javax.swing.JFrame {
     private javax.swing.JButton igual;
     private javax.swing.JButton multiplicacion;
     private javax.swing.JLabel pantalla;
+    private javax.swing.JLabel pantalla2;
     private javax.swing.JButton resta;
     private javax.swing.JButton suma;
     // End of variables declaration//GEN-END:variables
